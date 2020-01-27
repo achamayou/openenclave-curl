@@ -10,7 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: install openenclave
-      run: wget https://github.com/openenclave/openenclave/releases/download/v0.7.0/Ubuntu_18.04_open-enclave_0.7.0_amd64.deb && sudo dpkg -i Ubuntu_18.04_open-enclave_0.7.0_amd64.deb
+      run: |
+        echo 'deb [arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/intel-sgx.list
+        wget -qO - https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo apt-key add -
+        wget https://github.com/openenclave/openenclave/releases/download/v0.7.0/Ubuntu_18.04_open-enclave_0.7.0_amd64.deb && sudo dpkg -i Ubuntu_18.04_open-enclave_0.7.0_amd64.deb
     - name: cmake
       run: mkdir build && cd build && cmake ..
     - name: make
