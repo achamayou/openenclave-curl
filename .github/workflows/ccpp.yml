@@ -17,6 +17,7 @@ jobs:
         wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
         echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" | sudo tee /etc/apt/sources.list.d/msprod.list
         wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+        sudo apt update
         sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
     - name: cmake
       run: mkdir build && cd build && cmake ..
