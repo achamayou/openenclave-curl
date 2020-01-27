@@ -9,6 +9,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: install openenclave
+      run: wget https://github.com/openenclave/openenclave/releases/download/v0.7.0/Ubuntu_18.04_open-enclave_0.7.0_amd64.deb && sudo dpkg -i Ubuntu_18.04_open-enclave_0.7.0_amd64.deb
     - name: cmake
       run: mkdir build && cd build && cmake ..
     - name: make
