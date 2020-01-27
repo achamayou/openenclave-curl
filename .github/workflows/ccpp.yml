@@ -28,4 +28,4 @@ jobs:
     - name: cmake
       run: mkdir build && cd build && cmake ..
     - name: make
-      run: cd build && make
+      run: cd build && make VERBOSE=1
